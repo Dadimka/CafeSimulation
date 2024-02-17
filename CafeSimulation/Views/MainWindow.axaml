@@ -1,0 +1,109 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:CafeSimulation.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lvs="using:LiveChartsCore.SkiaSharpView.Avalonia"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
+        x:Class="CafeSimulation.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/logo.ico"
+        Title="CafeSimulation">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+
+    <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto" Margin="4">
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="30" FontWeight="900" Grid.Row="0"
+                   Grid.Column="0" Grid.ColumnSpan="3" Margin="10">
+            Симуляция Ресторана
+        </TextBlock>
+
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <TextBlock FontSize="18" FontWeight="900" Margin="5">Параметры ресторана:</TextBlock>
+            <TextBlock FontSize="14" FontWeight="500" Margin="5,5,5,0">Количество официантов:</TextBlock>
+            <TextBox Watermark="Кол-во официантов" Margin="5" Width="160" HorizontalAlignment="Left"
+                     Text="{Binding WaitersQuantity, Mode=TwoWay}">
+            </TextBox>
+            <TextBlock FontSize="14" FontWeight="500" Margin="5,5,5,0">Количество столов:</TextBlock>
+            <TextBox Watermark="Кол-во столов" Margin="5" Width="160" HorizontalAlignment="Left"
+                     Text="{Binding TablesQuantity, Mode=TwoWay}">
+            </TextBox>
+            <TextBlock FontSize="14" FontWeight="500" Margin="5,5,5,0">Количество поваров:</TextBlock>
+            <TextBox Watermark="Кол-во поваров" Margin="5" Width="160" HorizontalAlignment="Left"
+                     Text="{Binding ChefsQuantity, Mode=TwoWay}">
+            </TextBox>
+
+            <TextBlock FontSize="18" FontWeight="700" Margin="5,20,5,5">Часы работы:</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Watermark="8" Margin="5" Width="30" HorizontalAlignment="Left" TextAlignment="Center"
+                         Text="{Binding BeginWork, Mode=TwoWay}">
+                </TextBox>
+                <TextBlock FontSize="18" FontWeight="700" Margin="5"> — </TextBlock>
+                <TextBox Watermark="24" Margin="5" Width="30" HorizontalAlignment="Left" TextAlignment="Center"
+                         Text="{Binding EndWork, Mode=TwoWay}">
+                </TextBox>
+            </StackPanel>
+
+
+            <TextBlock FontSize="18" FontWeight="900" Margin="5,20,5, 5" Width="300" HorizontalAlignment="Left"
+                       TextWrapping="WrapWithOverflow">
+                Параметры нормального распределения посетителей:
+            </TextBlock>
+
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontSize="14" FontWeight="500" Margin="5,5,5,0">Час пик:</TextBlock>
+                    <TextBox Watermark="18" Margin="5" Width="30" HorizontalAlignment="Left" TextAlignment="Center"
+                             Text="{Binding PeakTime, Mode=TwoWay}">
+                    </TextBox>
+                    <TextBlock FontSize="14" FontWeight="500" Margin="5,5,5,0">Кол-во групп людей</TextBlock>
+                    <TextBox Watermark="20" Margin="5" Width="30" HorizontalAlignment="Left" TextAlignment="Center"
+                             Text="{Binding GroupQuantity, Mode=TwoWay}">
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock FontSize="14" FontWeight="500" Margin="5,5,5,0">Стандартное отклонение:</TextBlock>
+                        <TextBox Watermark="4" Margin="5" Width="30" HorizontalAlignment="Center"
+                                 TextAlignment="Center"
+                                 Text="{Binding StdDev, Mode=TwoWay}">
+                        </TextBox>
+                        <TextBlock FontSize="14" FontWeight="500" Margin="5,5,5,0">Макс. кол-во людей в группе</TextBlock>
+                        <TextBox Watermark="20" Margin="5" Width="30" HorizontalAlignment="Center"
+                                 TextAlignment="Center"
+                                 Text="{Binding MaxPeople, Mode=TwoWay}">
+                        </TextBox>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock FontSize="14" FontWeight="500" Margin="5,5,5,0">Кол-во мест за столом:</TextBlock>
+                <TextBox Watermark="6" Margin="5" Width="30" HorizontalAlignment="Left" TextAlignment="Center"
+                         Text="{Binding CapacityTable, Mode=TwoWay}">
+                </TextBox>
+            </StackPanel>
+
+
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <TextBlock HorizontalAlignment="Center">"Среднее время ожидания заказа (мин.)"</TextBlock>
+            <lvs:CartesianChart HorizontalAlignment="Center"
+                                Margin="50,0,50,50"
+                                Height="300"
+                                Width="400"
+                                Series="{Binding Series, Mode=TwoWay }">
+            </lvs:CartesianChart>
+        </StackPanel>
+
+
+        <Button Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Background="Fuchsia" FontSize="40" FontWeight="900"
+                HorizontalAlignment="Center" Command="{Binding GenerateChart}">
+            Моделировать
+        </Button>
+
+    </Grid>
+
+</Window>
