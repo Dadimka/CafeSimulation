@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CafeSimulation.AbstractClasses;
+using DynamicData;
 
 namespace CafeSimulation.Models.Classes;
 
@@ -8,6 +10,8 @@ public class Restaurant
 {
     private List<Dictionary<String, List<int>>> globalStat =
         new List<Dictionary<string, List<int>>>(new Dictionary<string, List<int>>[1441]);
+    
+    
 
     private int _tableQuantity;
     private int _waiterQuantity;
@@ -80,7 +84,12 @@ public class Restaurant
                     return;
                 }
             }
-
+            if (globalStat[_time] is null)
+            {
+                globalStat[_time] = new Dictionary<string, List<int>>();
+            }
+            globalStat[_time]["people_left"] = new List<int>();
+            globalStat[_time]["people_left"].Add(groupCounter);
             Console.Write($"REST: не хватает столов для {groupCounter} гостей\n");
             return;
         }
@@ -103,9 +112,14 @@ public class Restaurant
                     if (globalStat[_time] is null)
                     {
                         globalStat[_time] = new Dictionary<string, List<int>>();
-                        globalStat[_time]["waiting_time"] = new List<int>();
+                        
                     }
 
+                    if (!globalStat[_time].ContainsKey("waiting_time"))
+                    {
+                        globalStat[_time]["waiting_time"] = new List<int>();
+                    }
+                    
                     globalStat[_time]["waiting_time"].AddRange(result["waiting_time"]);
                 }
             }

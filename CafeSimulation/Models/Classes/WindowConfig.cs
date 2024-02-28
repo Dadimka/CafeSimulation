@@ -20,6 +20,7 @@ public class Config
     public int CapacityTable { get; set; } = 6;
 
     public List<double> GraphData { get; set; } = [];
+    public List<int> GraphDataPeople { get; set; } = [];
 
 
     public Config()
@@ -28,7 +29,7 @@ public class Config
     }
 
     public Config(int tablesQuantity, int waitersQuantity, int chefsQuantity, int beginWork, int endWork, int peakTime,
-        int stdDev, int groupQuantity, int maxPeople, int capacityTable, List<double> graphData)
+        int stdDev, int groupQuantity, int maxPeople, int capacityTable, List<double> graphData, List<int> graphDataPeople)
     {
         TablesQuantity = tablesQuantity;
         ChefsQuantity = chefsQuantity;
@@ -40,6 +41,7 @@ public class Config
         MaxPeople = maxPeople;
         CapacityTable = capacityTable;
         GraphData = graphData;
+        GraphDataPeople = graphDataPeople;
     }
 
     public void Save()
@@ -62,5 +64,6 @@ public class Config
         MaxPeople = config.MaxPeople;
         CapacityTable = config.CapacityTable;
         GraphData = config.GraphData;
+        GraphDataPeople = config.GraphDataPeople;
     }
 }

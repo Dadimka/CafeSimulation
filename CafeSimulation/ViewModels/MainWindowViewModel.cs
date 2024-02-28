@@ -41,6 +41,7 @@ public class MainWindowViewModel : ReactiveObject
 
 
     public static List<double> GraphData { get; set; } = new List<double>();
+    public static List<int> GraphDataPeople { get; set; } = new List<int>();
 
     public ISeries[] Series { get; set; } =
     {
@@ -48,6 +49,15 @@ public class MainWindowViewModel : ReactiveObject
         {
             Values = GraphData,
             Fill = new SolidColorPaint(SKColors.Blue)
+        }
+    };
+    
+    public ISeries[] SeriesPeople { get; set; } =
+    {
+        new ColumnSeries<int>
+        {
+            Values = GraphDataPeople,
+            Fill = new SolidColorPaint(SKColors.Purple)
         }
     };
 
@@ -64,6 +74,7 @@ public class MainWindowViewModel : ReactiveObject
     private void UpdateChart()
     {
         GraphData.Clear();
+        GraphDataPeople.Clear();
         Restaurant restaurant =
             new Restaurant(TablesQuantity, WaitersQuantity, ChefsQuantity, BeginWork, EndWork, PeakTime, StdDev,
                 GroupQuantity, MaxPeople, CapacityTable);
@@ -71,20 +82,31 @@ public class MainWindowViewModel : ReactiveObject
 
         for (int hour = 0; hour < 24; hour++)
         {
-            int total_sum = 0;
-            int n = 1;
+            long total_sum = 0;
+            int total_sum_people = 0;
+            long n = 1;
             for (int min = 0; min < 60; min++)
             {
                 int tick = hour * 60 + min;
 
-                if (statistics[tick] != null && statistics[tick].ContainsKey("waiting_time"))
+                if (statistics[tick] != null )
                 {
-                    n += statistics[tick]["waiting_time"].Count();
-                    total_sum += statistics[tick]["waiting_time"].Sum();
+                    if (statistics[tick].ContainsKey("waiting_time"))
+                    {
+                        n += statistics[tick]["waiting_time"].Count();
+                        total_sum += statistics[tick]["waiting_time"].Sum();
+                    }
+
+                    if (statistics[tick].ContainsKey("people_left"))
+                    {
+                        total_sum_people += statistics[tick]["people_left"][0];
+                    }
                 }
+                
             }
 
             GraphData.Add((double)total_sum / n);
+            GraphDataPeople.Add(total_sum_people);
         }
 
         SaveConfig();
@@ -92,6 +114,10 @@ public class MainWindowViewModel : ReactiveObject
             { new ColumnSeries<double> { Values = GraphData, Fill = new SolidColorPaint(SKColors.Blue) } };
         this.RaisePropertyChanged(nameof(GraphData));
         this.RaisePropertyChanged(nameof(Series));
+        SeriesPeople = new ISeries[]
+            { new ColumnSeries<int> { Values = GraphDataPeople, Fill = new SolidColorPaint(SKColors.Purple) } };
+        this.RaisePropertyChanged(nameof(GraphDataPeople));
+        this.RaisePropertyChanged(nameof(SeriesPeople));
     }
 
     private void SaveConfig()
@@ -106,7 +132,8 @@ public class MainWindowViewModel : ReactiveObject
             GroupQuantity,
             MaxPeople,
             CapacityTable,
-            GraphData);
+            GraphData,
+            GraphDataPeople);
 
         config.Save();
     }
@@ -125,8 +152,11 @@ public class MainWindowViewModel : ReactiveObject
         MaxPeople = _windowConfig.MaxPeople;
         CapacityTable = _windowConfig.CapacityTable;
         GraphData = _windowConfig.GraphData;
+        GraphDataPeople = _windowConfig.GraphDataPeople;
         Series = new ISeries[]
             { new ColumnSeries<double> { Values = GraphData, Fill = new SolidColorPaint(SKColors.Blue) } };
+        SeriesPeople = new ISeries[]
+            { new ColumnSeries<int> { Values = GraphDataPeople, Fill = new SolidColorPaint(SKColors.Purple) } };
         ;
     }
 }
