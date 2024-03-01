@@ -88,7 +88,10 @@ public class Restaurant
             {
                 globalStat[_time] = new Dictionary<string, List<int>>();
             }
-            globalStat[_time]["people_left"] = new List<int>();
+            if (!globalStat[_time].ContainsKey("people_left"))
+            {
+                globalStat[_time]["people_left"] = new List<int>();
+            }
             globalStat[_time]["people_left"].Add(groupCounter);
             Console.Write($"REST: не хватает столов для {groupCounter} гостей\n");
             return;
@@ -157,7 +160,7 @@ public class Restaurant
         }
     }
 
-    private void generateFutureQueue(int peak = 4, int stdDev = 18, int kolichestvo = 20, int minPeople = 1,
+    private void generateFutureQueue(int peak = 18, int stdDev = 4, int kolichestvo = 20, int minPeople = 1,
         int maxpeople = 6)
     {
         for (int i = 0; i < kolichestvo; i++)

@@ -155,10 +155,10 @@ public class Table : IComparable<Table>
     }
 
 
-    public override string ToString()
-    {
-        return string.Format("===\n" +
-                             "maxCapacity:{0}\n" +
-                             "isBusy:{1}\n", _maxCapacity, _isBusy);
-    }
+//     public override string ToString()
+//     {
+//         return string.Format("===\n" +
+//                              "maxCapacity:{0}\n" +
+//                              "isBusy:{1}\n", _maxCapacity, _isBusy);
+//     }
 }

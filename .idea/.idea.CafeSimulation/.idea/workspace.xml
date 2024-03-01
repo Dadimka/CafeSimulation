@@ -10,10 +10,10 @@
     <list default="true" id="b535bfd7-ea4c-486b-b559-62bb4c00ac55" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CafeSimulation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CafeSimulation/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CafeSimulation/Assets/WindowConfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/CafeSimulation/Assets/WindowConfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CafeSimulation/Models/Classes/Restaurant/Human.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CafeSimulation/Models/Classes/Restaurant/Human.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CafeSimulation/Models/Classes/Restaurant/Kitchen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CafeSimulation/Models/Classes/Restaurant/Kitchen.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CafeSimulation/Models/Classes/Restaurant/Restaurant.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CafeSimulation/Models/Classes/Restaurant/Restaurant.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CafeSimulation/Models/Classes/WindowConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CafeSimulation/Models/Classes/WindowConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CafeSimulation/ViewModels/MainWindowViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CafeSimulation/ViewModels/MainWindowViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CafeSimulation/Views/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/CafeSimulation/Views/MainWindow.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CafeSimulation/Models/Classes/Restaurant/Table.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CafeSimulation/Models/Classes/Restaurant/Table.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CafeSimulation/bin/Debug/net8.0/CafeSimulation.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CafeSimulation/bin/Debug/net8.0/CafeSimulation.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CafeSimulation/bin/Debug/net8.0/CafeSimulation.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CafeSimulation/bin/Debug/net8.0/CafeSimulation.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CafeSimulation/obj/Debug/net8.0/Avalonia/original.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CafeSimulation/obj/Debug/net8.0/Avalonia/original.dll" afterDir="false" />
@@ -52,8 +52,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8bc9cdb23bc146bcaaae0bb9e45e5d46d9dc00/44/0f41a11c/List`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8bc9cdb23bc146bcaaae0bb9e45e5d46d9dc00/49/b8b227e2/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8bc9cdb23bc146bcaaae0bb9e45e5d46d9dc00/a7/9e75f14a/RuntimeHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8bc9cdb23bc146bcaaae0bb9e45e5d46d9dc00/ab/a80a674a/Queue`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8bc9cdb23bc146bcaaae0bb9e45e5d46d9dc00/b1/a0b6b514/Random.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/52caca2df58add9eea6f18ffa60d7d5d87673a299c533a980d835e73ebfefd8/TextBox.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e2a429f38cfae242ebe16e4e658a31e3a188d3b79c6e243298c5f81814aacc9/IReactiveObjectExtensions.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -129,8 +131,20 @@
       <workItem from="1708973655129" duration="93000" />
       <workItem from="1709044427632" duration="6290000" />
       <workItem from="1709050733808" duration="43000" />
-      <workItem from="1709114010931" duration="6518000" />
+      <workItem from="1709114010931" duration="6574000" />
+      <workItem from="1709127281747" duration="157000" />
+      <workItem from="1709128796085" duration="824000" />
+      <workItem from="1709319874668" duration="12267000" />
     </task>
+    <task id="LOCAL-00001" summary="people left">
+      <option name="closed" value="true" />
+      <created>1709120593790</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1709120593790</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,25 +153,10 @@
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="people left" />
+    <option name="LAST_COMMIT_MESSAGE" value="people left" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/CafeSimulation/Models/Classes/Restaurant/Restaurant.cs</url>
-          <line>182</line>
-          <properties documentPath="$PROJECT_DIR$/CafeSimulation/Models/Classes/Restaurant/Restaurant.cs" initialLine="178" containingFunctionPresentation="Method 'Simulate'">
-            <startOffsets>
-              <option value="5331" />
-            </startOffsets>
-            <endOffsets>
-              <option value="5349" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Frame#CafeSimulation.Models.Classes.Restaurant.ProcessQueue" memberName="this" />

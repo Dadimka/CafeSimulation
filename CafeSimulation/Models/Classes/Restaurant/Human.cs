@@ -99,12 +99,12 @@ public class Human
         get { return _id; }
     }
 
-    public override string ToString()
-    {
-        return string.Format("===\n" +
-                             "human\n" +
-                             "isWaitingFood: {0}\n" +
-                             "isWaitingOrder: {1}\n" +
-                             "order: {2}\n", _isWaitingFood, _isWaitingOrder, _order);
-    }
+    // public override string ToString()
+    // {
+    //     return string.Format("===\n" +
+    //                          "human\n" +
+    //                          "isWaitingFood: {0}\n" +
+    //                          "isWaitingOrder: {1}\n" +
+    //                          "order: {2}\n", _isWaitingFood, _isWaitingOrder, _order);
+    // }
 }

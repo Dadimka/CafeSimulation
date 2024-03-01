@@ -69,7 +69,6 @@ public class Kitchen
     public void Refresh()
     {
         _time++;
-        // int counter = 0;
         foreach (Chef chef in chefList)
         {
             OrderItem peekResult;
